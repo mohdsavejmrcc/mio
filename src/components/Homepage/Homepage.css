@@ -1,0 +1,139 @@
+/* HomePage.css */
+/* *{
+    width:1280px;
+    
+    } */
+.Mrcc-logo {
+    width: 146px;
+    height: 84px;
+    margin: 30px 507px 69px 20px;
+    object-fit: contain;
+  }
+  
+  .Group-3895 {
+    width: 601px;
+    height: 435px;
+    margin: -56.5px 0 0 136px;
+    object-fit: contain;
+    float: right;
+  }
+  
+  .Hi-I-am-Mio-Your-AI-powered-Learning-Companion {
+    width: 400px;
+    height: 100px;
+    margin: 10px 136px 0 0;
+    padding: 52px 90px 59px 119px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    font-family: InstrumentSans, sans-serif; /* Added fallback font */
+    font-size: 49px;
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: 1.91px;
+    text-align: left;
+    color: #000;
+  }
+  
+  .Hi-I-am-Mio-Your-AI-powered-Learning-Companion .text-style-1 {
+    font-size: 41px;
+    letter-spacing: 1.6px;
+  }
+  
+  .Hi-I-am-Mio-Your-AI-powered-Learning-Companion .text-style-2 {
+    color: #fff;
+    background-color: #FFA500; /* Saffron background */
+  
+  }
+  
+  .Rectangle-2474 {
+    width: 100px;
+    height: 30px;
+    margin: -80px 437px -100px 30px;
+    padding: 15px 69px;
+    border-radius: 25px;
+    background-color: #6ec9f2;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+  .mid{
+    justify-content: space-between;
+  }
+
+  .Rectangle-2474{
+    margin:100px 0px 100px 100px;
+  }
+  .login-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-content {
+    background: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dialog-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-form, .admin-form {
+    width: 400px;
+    align-items: center;
+}
+
+.country-code {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.get-otp-button, .login-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6ec9f2; /* Same light blue background */
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#phone{
+    margin-right: 30px;
+}
