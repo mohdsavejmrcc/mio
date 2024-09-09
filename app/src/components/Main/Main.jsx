@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Main.css"; // Custom CSS styles
-import historyData from './historyData.json'
+import historyData from "./historyData.json";
 
 const Main = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -8,7 +8,9 @@ const Main = () => {
   const [history, setHistory] = useState(historyData);
   const [activeSidebarTab, setActiveSidebarTab] = useState("history");
   const [searchInput, setSearchInput] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
   const [dropdownMenu, setDropdownMenu] = useState(null); // To track which menu is open
+  const [isSearching, setIsSearching] = useState(false); // Track search state
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -46,11 +48,23 @@ const Main = () => {
       const currentMonth = new Date().toLocaleString("default", {
         month: "long",
       });
+
+      // Add user message to chat
+      setChatMessages((prev) => [...prev, { type: "user", text: searchInput }]);
+
+      // Add bot response to chat (for demo purposes, using a static response)
+      const botResponse = `Animal is a living being`; // Replace with actual response logic
+
+      setChatMessages((prev) => [...prev, { type: "bot", text: botResponse }]);
+
+      // Update history
       setHistory((prev) => ({
         ...prev,
         [currentMonth]: [...(prev[currentMonth] || []), searchInput],
       }));
+
       setSearchInput("");
+      setIsSearching(true); // Set searching state to true
     }
   };
 
@@ -65,6 +79,10 @@ const Main = () => {
       handleDeleteEvent(dropdownMenu.month, dropdownMenu.event);
     }
     setDropdownMenu(null); // Close menu after action
+  };
+
+  const handleSearchClear = () => {
+    setIsSearching(false); // Clear search state
   };
 
   return (
@@ -194,25 +212,45 @@ const Main = () => {
         )}
 
         <div className="main-content">
-          <div className="robot-image">
-            <img src="assets/group-3895.png" alt="Robot" />
-          </div>
-          <div className="button-group">
-            <button className="button gamification">
-              Gamification in Learning
-            </button>
-            <button className="button assessment">Assessment Strategies</button>
-            <button className="button create-module">
-              Create Learning Module
-            </button>
-            <button className="button start-learning">Start My Learning</button>
-            <button className="button critical-thinking">
-              Critical Thinking
-            </button>
-            <button className="button self-directed">
-              Self-Directed Learning
-            </button>
-          </div>
+          <img
+            src="assets/group-3895.png" // Your robot icon
+            alt="Robot"
+            className="robot-icon"
+          />
+          {isSearching && (
+            <div className="chat-box">
+              <div className="chat-messages">
+                {chatMessages.map((msg, index) => (
+                  <div key={index} className={`chat-message ${msg.type}`}>
+                    <div className="message-text">{msg.text}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {!isSearching && (
+            <div className="button-group">
+              <button className="button gamification">
+                Gamification in Learning
+              </button>
+              <button className="button assessment">
+                Assessment Strategies
+              </button>
+              <button className="button create-module">
+                Create Learning Module
+              </button>
+              <button className="button start-learning">
+                Start My Learning
+              </button>
+              <button className="button critical-thinking">
+                Critical Thinking
+              </button>
+              <button className="button self-directed">
+                Self-Directed Learning
+              </button>
+            </div>
+          )}
+
           <div className="search-bar">
             <input
               type="text"
@@ -220,18 +258,17 @@ const Main = () => {
               value={searchInput}
               onChange={handleInputChange}
             />
-            <button className="btn send-btn" onClick={handleSendClick}>
+            <button className="send-btn" onClick={handleSendClick}>
               Send
             </button>
+            {isSearching && (
+              <button className="clear-btn" onClick={handleSearchClear}>
+                Clear
+              </button>
+            )}
           </div>
         </div>
       </div>
-
-      {/* {!isSidebarOpen && (
-        <div className="history-button" onClick={toggleSidebar}>
-          History
-        </div>
-      )} */}
     </div>
   );
 };
